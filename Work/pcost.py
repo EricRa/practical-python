@@ -2,23 +2,34 @@
 #
 # Exercise 1.27
 
-data = []
 
-f = open("Data/portfolio.csv", "rt")
-headers = next(f).split(",")
+def portfolio_cost(filename):
 
-for line in f:
-    row = line.split(",")
-    data.append(row)
+    data = []
 
-f.close()
+    f = open("Data/portfolio.csv", "rt")
+    headers = next(f).split(",")
 
-#print(data)
+    for line in f:
+        row = line.split(",")
+        data.append(row)
 
-total = 0
+    f.close()
 
-for rowdata in data:
-    subtotal = float(rowdata[1]) * float(rowdata[2])
-    total = total + subtotal
+    #print(data)
+
+    total = 0
+
+    for rowdata in data:
+        try:
+            subtotal = float(rowdata[1]) * float(rowdata[2])
+            total = total + subtotal
+        except ValueError:
+            print("Could not parse", rowdata)
+        
+    return total
+        
+    # print(f"The total is: ${total}")
     
-print(f"The total is: ${total}")
+cost = portfolio_cost("/Data/portfolio.csv")
+print("Total cost: ", cost)
