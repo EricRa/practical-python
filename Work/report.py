@@ -25,6 +25,7 @@
 # Exercise 2.5
 
 import csv
+from pprint import pprint
 
 def read_portfolio(filename):
     """ Opens a portfolio file and reads it into a list of tuples"""
@@ -42,4 +43,4 @@ def read_portfolio(filename):
     return portfolio
 
 data = read_portfolio("Data/portfolio.csv")
-print(data)
+pprint(data)
